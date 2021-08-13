@@ -5,10 +5,14 @@ import { MusicApiClient } from '../api/interface/MusicApiClient.interface';
 import { Artist } from '../artist/Artist.interface';
 import { Album } from './Album.interface';
 
+export interface AlbumController {
+  getAlbumsByArtistName: (artistName: string) => Observable<Album>;
+}
+
 export const getAlbumController = <ArtistAPI, AlbumAPI>(
   apiClient: MusicApiClient<ArtistAPI, AlbumAPI>,
   mapper: ApiMapper<ArtistAPI, AlbumAPI>,
-) => ({
+): AlbumController => ({
   getAlbumsByArtistName: (artistName: string): Observable<Album> =>
     apiClient.getFirstArtistByName(artistName).pipe(
       map(mapper.mapArtist),

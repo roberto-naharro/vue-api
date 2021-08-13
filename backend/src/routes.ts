@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Router } from 'express';
 import { getRoutes as getAlbumRoutes } from './album/album.routes';
 import { ApiMapper } from './api/interface/ApiMapper.interface';
 import { MusicApiClient } from './api/interface/MusicApiClient.interface';
@@ -6,7 +6,7 @@ import { MusicApiClient } from './api/interface/MusicApiClient.interface';
 export function getRoutes<ArtistAPI, AlbumAPI>(dependencies: {
   apiClient: MusicApiClient<ArtistAPI, AlbumAPI>;
   mapper: ApiMapper<ArtistAPI, AlbumAPI>;
-}) {
+}): Router {
   const router = express.Router();
 
   router.use(

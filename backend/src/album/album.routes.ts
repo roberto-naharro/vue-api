@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Router } from 'express';
 import { reduce } from 'rxjs/operators';
 import { ApiMapper } from '../api/interface/ApiMapper.interface';
 import { MusicApiClient } from '../api/interface/MusicApiClient.interface';
@@ -8,7 +8,7 @@ import { Album } from './Album.interface';
 export function getRoutes<ArtistAPI, AlbumAPI>(
   apiClient: MusicApiClient<ArtistAPI, AlbumAPI>,
   mapper: ApiMapper<ArtistAPI, AlbumAPI>,
-) {
+): Router {
   const albumRouter = express.Router();
   const albumController = getAlbumController(apiClient, mapper);
 
@@ -37,6 +37,10 @@ export function getRoutes<ArtistAPI, AlbumAPI>(
             .send(
               JSON.stringify({ resultCount: albums.length, results: albums }),
             );
+        },
+        error: (err: Error) => {
+          console.error(err);
+          res.status(500).send('Internal server error');
         },
       });
   });

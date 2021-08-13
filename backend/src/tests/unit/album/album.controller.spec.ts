@@ -10,8 +10,8 @@ import { buildMockAlbum } from '../../../album/__mocks__/album.mock';
 
 describe('Album controller test suite', () => {
   let albumController: ReturnType<typeof getAlbumController>;
-  let mockApiClient = buildMockMusicApiClient();
-  let mockApiMapper = buildMockApiMapper();
+  const mockApiClient = buildMockMusicApiClient();
+  const mockApiMapper = buildMockApiMapper();
 
   beforeEach(() => {
     albumController = getAlbumController(mockApiClient, mockApiMapper);

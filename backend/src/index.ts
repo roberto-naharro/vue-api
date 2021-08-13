@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 app.use('/', getRoutes(dependencies));
 
 // Error handling
-app.use((req, res, next) => {
+app.use((_req, res) => {
   const error = new Error('Not found');
   return res.status(404).json({
     message: error.message,
