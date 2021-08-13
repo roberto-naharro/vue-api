@@ -20,9 +20,13 @@ module.exports = {
   overrides: [
     {
       files: [
+        '**/__mocks__/*.{j,t}s?(x)',
         '**/__tests__/*.{j,t}s?(x)',
         '**/tests/unit/**/*.spec.{j,t}s?(x)',
       ],
+      rules: {
+        '@typescript-eslint/no-explicit-any': 'off',
+      },
       env: {
         jest: true,
       },
