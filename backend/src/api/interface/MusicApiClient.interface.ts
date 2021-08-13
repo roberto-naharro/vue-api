@@ -5,6 +5,6 @@ import { Observable } from "rxjs";
  */
 export interface MusicApiClient<ArtistAPI, AlbumAPI> {
   baseUrl: string;
-  getArtistIdByName: (artistName: string) => Observable<ArtistAPI>;
+  getFirstArtistByName: (artistName: string) => Observable<ArtistAPI>;
   getAlbumsByArtistId: (artistId: number) => Observable<AlbumAPI>;
 }

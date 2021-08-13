@@ -11,7 +11,7 @@ const baseUrl = 'https://itunes.apple.com';
 
 export const iTunesApi: MusicApiClient<ITunesArtist, ITunesAlbum> = {
   baseUrl,
-  getArtistIdByName: function (artistName: string): Observable<ITunesArtist> {
+  getFirstArtistByName: function (artistName: string): Observable<ITunesArtist> {
     return from(
       got('search', {
         prefixUrl: this.baseUrl,

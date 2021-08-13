@@ -10,7 +10,7 @@ export const getAlbumController = <ArtistAPI, AlbumAPI>(
   mapper: ApiMapper<ArtistAPI, AlbumAPI>,
 ) => ({
   getAlbumsByArtistName: (artistName: string): Observable<Album> =>
-    apiClient.getArtistIdByName(artistName).pipe(
+    apiClient.getFirstArtistByName(artistName).pipe(
       map(mapper.mapArtist),
       switchMap((artist: Artist) =>
         apiClient.getAlbumsByArtistId(artist.id).pipe(
